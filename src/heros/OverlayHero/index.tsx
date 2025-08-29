@@ -7,16 +7,19 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const OverlayHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const OverlayHero: React.FC<Page['hero'] & { textColor?: string }> = ({ links, media, richText, textColor }) => {
   const { setHeaderTheme } = useHeaderTheme()
+  const textColorClass = getTextColorClasses(textColor)
+  const captionColorClass = getCaptionTextColorClasses(textColor)
 
   useEffect(() => {
     setHeaderTheme('dark')
   })
 
   return (
-    <div className="relative min-h-[70vh] flex items-center justify-center text-white">
+    <div className={`relative min-h-[70vh] flex items-center justify-center ${textColorClass}`}>
       <div className="absolute inset-0 bg-black/40 z-10" />
       
       {media && typeof media === 'object' && (
@@ -52,7 +55,7 @@ export const OverlayHero: React.FC<Page['hero']> = ({ links, media, richText }) 
       
       {media && typeof media === 'object' && media?.caption && (
         <div className="absolute bottom-6 left-6 z-20">
-          <div className="text-sm text-white/90 bg-black/30 px-3 py-2 rounded-lg backdrop-blur-sm">
+          <div className={`text-sm ${captionColorClass} bg-black/30 px-3 py-2 rounded-lg backdrop-blur-sm`}>
             <RichText content={media.caption} enableGutter={false} />
           </div>
         </div>
