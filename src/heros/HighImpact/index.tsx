@@ -9,7 +9,7 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const HighImpactHero: React.FC<Page['hero'] & { textColor?: string }> = ({ links, media, richText, textColor }) => {
+export const HighImpactHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const textColorClass = getTextColorClasses(textColor)
 

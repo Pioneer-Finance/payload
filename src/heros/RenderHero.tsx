@@ -36,7 +36,7 @@ const heroes = {
   floating: FloatingHero,
 }
 
-export const RenderHero: React.FC<Page['hero'] & { textColor?: string }> = (props) => {
+export const RenderHero: React.FC<Page['hero'] & { textColor?: string | null }> = (props) => {
   const { type } = props || {}
 
   if (!type || type === 'none') return null

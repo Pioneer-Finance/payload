@@ -9,7 +9,7 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const GradientHeroBlock: React.FC<GradientHeroBlock> = ({ links, media, richText, textColor }) => {
+export const GradientHero: React.FC<GradientHeroBlock> = ({ links, media, richText, textColor }) => {
   const { setHeaderTheme } = useHeaderTheme()
   const textColorClass = getTextColorClasses(textColor)
   const captionColorClass = getCaptionTextColorClasses(textColor)

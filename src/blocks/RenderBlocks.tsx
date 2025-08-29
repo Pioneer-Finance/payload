@@ -9,7 +9,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SplitHeroBlock } from '@/blocks/SplitHero/Component'
-import { GradientHeroBlock } from '@/blocks/GradientHero/Component'
+import { GradientHero } from '@/blocks/GradientHero/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,7 +18,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   splitHero: SplitHeroBlock,
-  gradientHero: GradientHeroBlock,
+  gradientHero: GradientHero,
 }
 
 export const RenderBlocks: React.FC<{

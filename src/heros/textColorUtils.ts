@@ -1,4 +1,4 @@
-export const getTextColorClasses = (textColor: string = 'white'): string => {
+export const getTextColorClasses = (textColor: string | null = 'white'): string => {
   const colorMap = {
     white: 'text-white',
     black: 'text-black',
@@ -15,7 +15,7 @@ export const getTextColorClasses = (textColor: string = 'white'): string => {
   return colorMap[textColor as keyof typeof colorMap] || 'text-white'
 }
 
-export const getCaptionTextColorClasses = (textColor: string = 'white'): string => {
+export const getCaptionTextColorClasses = (textColor: string | null = 'white'): string => {
   const colorMap = {
     white: 'text-white/80',
     black: 'text-black/70',
