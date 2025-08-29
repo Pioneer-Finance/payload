@@ -35,6 +35,54 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Split Layout',
+          value: 'split',
+        },
+        {
+          label: 'Centered',
+          value: 'centered',
+        },
+        {
+          label: 'Minimal',
+          value: 'minimal',
+        },
+        {
+          label: 'Gradient Background',
+          value: 'gradient',
+        },
+        {
+          label: 'Card Style',
+          value: 'card',
+        },
+        {
+          label: 'Overlay',
+          value: 'overlay',
+        },
+        {
+          label: 'Stacked',
+          value: 'stacked',
+        },
+        {
+          label: 'Sidebar Layout',
+          value: 'sidebar',
+        },
+        {
+          label: 'Banner',
+          value: 'banner',
+        },
+        {
+          label: 'Vertical',
+          value: 'vertical',
+        },
+        {
+          label: 'Compact',
+          value: 'compact',
+        },
+        {
+          label: 'Floating Elements',
+          value: 'floating',
+        },
       ],
       required: true,
     },
@@ -62,7 +110,7 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => !['none', 'lowImpact'].includes(type),
       },
       relationTo: 'media',
       required: true,
