@@ -74,7 +74,7 @@ export const GradientHero: Block = {
       ],
     },
   ],
-  interfaceName: 'GradientHeroBlock',
+  interfaceName: 'GradientHero',
   labels: {
     singular: 'Gradient Hero',
     plural: 'Gradient Heroes',

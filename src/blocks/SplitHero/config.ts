@@ -23,7 +23,7 @@ export const SplitHero: Block = {
       required: true,
     },
   ],
-  interfaceName: 'SplitHeroBlock',
+  interfaceName: 'SplitHero',
   labels: {
     singular: 'Split Hero',
     plural: 'Split Heroes',

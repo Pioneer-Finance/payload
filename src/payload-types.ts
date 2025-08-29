@@ -140,15 +140,7 @@ export interface Page {
       | ('white' | 'black' | 'gray-light' | 'gray-dark' | 'blue' | 'red' | 'green' | 'yellow' | 'purple' | 'pink')
       | null;
   };
-  layout: (
-    | SplitHeroBlock
-    | GradientHeroBlock
-    | CallToActionBlock
-    | ContentBlock
-    | MediaBlock
-    | ArchiveBlock
-    | FormBlock
-  )[];
+  layout: (SplitHero | GradientHero | CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
     title?: string | null;
     image?: (number | null) | Media;
@@ -247,9 +239,9 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SplitHeroBlock".
+ * via the `definition` "SplitHero".
  */
-export interface SplitHeroBlock {
+export interface SplitHero {
   richText: {
     root: {
       type: string;
@@ -288,9 +280,9 @@ export interface SplitHeroBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GradientHeroBlock".
+ * via the `definition` "GradientHero".
  */
-export interface GradientHeroBlock {
+export interface GradientHero {
   richText: {
     root: {
       type: string;

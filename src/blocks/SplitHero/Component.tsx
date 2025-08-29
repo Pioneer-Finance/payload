@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import type { SplitHeroBlock } from '@/payload-types'
+import type { SplitHero as  SplitHeroBlock } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
