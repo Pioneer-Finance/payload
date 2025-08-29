@@ -103,7 +103,7 @@ importers:
         specifier: 7.45.4
         version: 7.45.4(react@19.0.0-rc-65a56d0e-20241020)
       sharp:
-        specifier: 0.32.6
+        specifier: ^0.32.6
         version: 0.32.6
       tailwind-merge:
         specifier: ^2.5.5
