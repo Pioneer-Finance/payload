@@ -7,7 +7,7 @@ import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 
-export const SplitHeroBlock: React.FC<SplitHeroBlock> = ({ links, media, richText }) => {
+export const SplitHero: React.FC<SplitHeroBlock> = ({ links, media, richText }) => {
   return (
     <div className="container py-16 md:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[60vh]">

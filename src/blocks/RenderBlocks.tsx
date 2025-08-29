@@ -8,7 +8,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { SplitHeroBlock } from '@/blocks/SplitHero/Component'
+import { SplitHero } from '@/blocks/SplitHero/Component'
 import { GradientHero } from '@/blocks/GradientHero/Component'
 
 const blockComponents = {
@@ -17,7 +17,7 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
-  splitHero: SplitHeroBlock,
+  splitHero: SplitHero,
   gradientHero: GradientHero,
 }
 
