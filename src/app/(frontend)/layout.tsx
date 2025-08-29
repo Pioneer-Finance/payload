@@ -18,11 +18,13 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = await draftMode()
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
 })
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const { isEnabled } = await draftMode()
+
   return (
     <html className={cn(plusJakarta.className)} lang="en" suppressHydrationWarning>
       <head>
