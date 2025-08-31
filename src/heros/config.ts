@@ -121,8 +121,7 @@ export const hero: Field = {
       label: 'Text Color',
       defaultValue: 'white',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'gradient', 'overlay'].includes(type),
-        description: 'Choose text color that contrasts well with your background image',
+        description: 'Choose text color for all hero text elements',
       },
       options: [
         {

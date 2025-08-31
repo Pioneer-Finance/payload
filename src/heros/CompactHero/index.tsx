@@ -5,11 +5,15 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const CompactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const CompactHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
     <div className="bg-gray-50 border-b border-gray-200">
-      <div className="container py-8 md:py-12">
+      <div className={`container py-8 md:py-12 ${textColorClass}`}>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="flex-1 space-y-4">
             {richText && (
@@ -42,7 +46,7 @@ export const CompactHero: React.FC<Page['hero']> = ({ links, media, richText }) 
                 />
               </div>
               {media?.caption && (
-                <div className="mt-2 text-xs text-gray-500 text-center">
+                <div className={`mt-2 text-xs text-center ${captionTextColorClass}`}>
                   <RichText content={media.caption} enableGutter={false} />
                 </div>
               )}

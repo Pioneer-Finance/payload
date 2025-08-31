@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const CenteredHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const CenteredHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="container py-20 md:py-32">
+    <div className={`container py-20 md:py-32 ${textColorClass}`}>
       <div className="text-center max-w-4xl mx-auto space-y-8">
         {richText && (
           <RichText 
@@ -37,7 +41,7 @@ export const CenteredHero: React.FC<Page['hero']> = ({ links, media, richText })
               resource={media}
             />
             {media?.caption && (
-              <div className="mt-6 text-center">
+              <div className={`mt-6 text-center ${captionTextColorClass}`}>
                 <RichText content={media.caption} enableGutter={false} />
               </div>
             )}

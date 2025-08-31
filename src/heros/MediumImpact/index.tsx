@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const MediumImpactHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="">
+    <div className={textColorClass}>
       <div className="container mb-8">
         {richText && <RichText className="mb-6" content={richText} enableGutter={false} />}
 
@@ -34,7 +38,7 @@ export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richTex
               resource={media}
             />
             {media?.caption && (
-              <div className="mt-3">
+              <div className={`mt-3 ${captionTextColorClass}`}>
                 <RichText content={media.caption} enableGutter={false} />
               </div>
             )}

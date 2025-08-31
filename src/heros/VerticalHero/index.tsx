@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const VerticalHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const VerticalHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="min-h-screen flex flex-col justify-center py-16">
+    <div className={`min-h-screen flex flex-col justify-center py-16 ${textColorClass}`}>
       <div className="container">
         <div className="max-w-2xl mx-auto space-y-12 text-center">
           <div className="space-y-8">
@@ -40,7 +44,7 @@ export const VerticalHero: React.FC<Page['hero']> = ({ links, media, richText })
                 resource={media}
               />
               {media?.caption && (
-                <div className="mt-6 text-sm text-gray-600">
+                <div className={`mt-6 text-sm ${captionTextColorClass}`}>
                   <RichText content={media.caption} enableGutter={false} />
                 </div>
               )}

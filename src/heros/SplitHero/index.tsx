@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const SplitHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const SplitHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="container py-16 md:py-24">
+    <div className={`container py-16 md:py-24 ${textColorClass}`}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[60vh]">
         <div className="order-2 lg:order-1 space-y-6">
           {richText && <RichText className="text-lg" content={richText} enableGutter={false} />}
@@ -36,7 +40,7 @@ export const SplitHero: React.FC<Page['hero']> = ({ links, media, richText }) =>
                 resource={media}
               />
               {media?.caption && (
-                <div className="mt-4">
+                <div className={`mt-4 ${captionTextColorClass}`}>
                   <RichText content={media.caption} enableGutter={false} />
                 </div>
               )}

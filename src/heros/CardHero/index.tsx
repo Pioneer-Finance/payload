@@ -5,8 +5,12 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const CardHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const CardHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
     <div className="container py-16 md:py-24">
       <div className="max-w-6xl mx-auto">
@@ -23,7 +27,7 @@ export const CardHero: React.FC<Page['hero']> = ({ links, media, richText }) => 
               </div>
             )}
             
-            <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-center space-y-8">
+            <div className={`p-8 md:p-12 lg:p-16 flex flex-col justify-center space-y-8 ${textColorClass}`}>
               {richText && (
                 <RichText 
                   className="text-lg md:text-xl leading-relaxed" 
@@ -43,7 +47,7 @@ export const CardHero: React.FC<Page['hero']> = ({ links, media, richText }) => 
               )}
               
               {media && typeof media === 'object' && media?.caption && (
-                <div className="text-sm text-gray-600 border-t pt-6">
+                <div className={`text-sm border-t pt-6 ${captionTextColorClass}`}>
                   <RichText content={media.caption} enableGutter={false} />
                 </div>
               )}

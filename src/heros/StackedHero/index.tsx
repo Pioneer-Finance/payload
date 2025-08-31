@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const StackedHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const StackedHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="container py-16 md:py-24">
+    <div className={`container py-16 md:py-24 ${textColorClass}`}>
       <div className="max-w-4xl mx-auto text-center space-y-16">
         {richText && (
           <div className="space-y-6">
@@ -29,7 +33,7 @@ export const StackedHero: React.FC<Page['hero']> = ({ links, media, richText }) 
               resource={media}
             />
             {media?.caption && (
-              <div className="text-center text-sm text-gray-600">
+              <div className={`text-center text-sm ${captionTextColorClass}`}>
                 <RichText content={media.caption} enableGutter={false} />
               </div>
             )}

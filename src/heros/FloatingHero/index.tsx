@@ -5,8 +5,12 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const FloatingHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const FloatingHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
     <div className="relative min-h-[80vh] bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center overflow-hidden">
       {/* Floating background elements */}
@@ -19,7 +23,7 @@ export const FloatingHero: React.FC<Page['hero']> = ({ links, media, richText })
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 transform hover:scale-105 transition-transform duration-300">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50">
+            <div className={`bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50 ${textColorClass}`}>
               {richText && (
                 <RichText 
                   className="text-xl md:text-2xl lg:text-3xl font-semibold leading-tight" 
@@ -50,7 +54,7 @@ export const FloatingHero: React.FC<Page['hero']> = ({ links, media, richText })
                   resource={media}
                 />
                 {media?.caption && (
-                  <div className="mt-4 text-center text-sm text-gray-700">
+                  <div className={`mt-4 text-center text-sm ${captionTextColorClass}`}>
                     <RichText content={media.caption} enableGutter={false} />
                   </div>
                 )}

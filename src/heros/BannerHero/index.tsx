@@ -5,12 +5,16 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const BannerHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const BannerHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
     <div className="relative w-full">
       <div className="bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-        <div className="container py-12 md:py-16">
+        <div className={`container py-12 md:py-16 ${textColorClass}`}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
             <div className="md:col-span-3 space-y-6">
               {richText && (
@@ -42,7 +46,7 @@ export const BannerHero: React.FC<Page['hero']> = ({ links, media, richText }) =
                     resource={media}
                   />
                   {media?.caption && (
-                    <div className="mt-3 text-sm text-gray-600 text-center">
+                    <div className={`mt-3 text-sm text-center ${captionTextColorClass}`}>
                       <RichText content={media.caption} enableGutter={false} />
                     </div>
                   )}

@@ -5,10 +5,14 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { getTextColorClasses, getCaptionTextColorClasses } from '@/heros/textColorUtils'
 
-export const SidebarHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const SidebarHero: React.FC<Page['hero'] & { textColor?: string | null }> = ({ links, media, richText, textColor }) => {
+  const textColorClass = getTextColorClasses(textColor)
+  const captionTextColorClass = getCaptionTextColorClasses(textColor)
+
   return (
-    <div className="container py-16 md:py-24">
+    <div className={`container py-16 md:py-24 ${textColorClass}`}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2 space-y-8">
           {media && typeof media === 'object' && (
@@ -20,7 +24,7 @@ export const SidebarHero: React.FC<Page['hero']> = ({ links, media, richText }) 
                 resource={media}
               />
               {media?.caption && (
-                <div className="mt-4 text-sm text-gray-600">
+                <div className={`mt-4 text-sm ${captionTextColorClass}`}>
                   <RichText content={media.caption} enableGutter={false} />
                 </div>
               )}
