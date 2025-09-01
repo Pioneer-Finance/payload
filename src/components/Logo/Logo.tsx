@@ -41,7 +41,7 @@ export const Logo = (props: Props) => {
   const logoStyle: React.CSSProperties = {
     maxWidth: customMaxWidth,
     width: logoData?.width ? `${logoData.width}px` : '100%',
-    height: logoData?.height ? `${logoData.height}px` : '34px',
+    height: logoData?.height ? `${logoData.height}px` : '100%',
   }
 
   return (
