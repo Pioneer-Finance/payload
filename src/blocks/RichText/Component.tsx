@@ -8,7 +8,7 @@ export const RichTextBlock: React.FC<RichTextBlockProps> = (props) => {
 
   return (
     <div className="container my-16">
-      <div className="max-w-4xl mx-auto">
+      <div className="">
         {content && <RichText content={content} enableGutter={false} />}
       </div>
     </div>

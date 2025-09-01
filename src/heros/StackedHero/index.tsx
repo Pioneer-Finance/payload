@@ -13,7 +13,7 @@ export const StackedHero: React.FC<Page['hero'] & { textColor?: string | null }>
 
   return (
     <div className={`container py-16 md:py-24 ${textColorClass}`}>
-      <div className="max-w-4xl mx-auto text-center space-y-16">
+      <div className="text-center space-y-16">
         {richText && (
           <div className="space-y-6">
             <RichText 

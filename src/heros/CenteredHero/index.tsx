@@ -13,7 +13,7 @@ export const CenteredHero: React.FC<Page['hero'] & { textColor?: string | null }
 
   return (
     <div className={`container py-20 md:py-32 ${textColorClass}`}>
-      <div className="text-center max-w-4xl mx-auto space-y-8">
+      <div className="text-center space-y-8">
         {richText && (
           <RichText 
             className="text-xl md:text-2xl leading-relaxed" 
