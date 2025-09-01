@@ -33,8 +33,8 @@ export const Logo = (props: Props) => {
   const logoAlt = logoData?.alt || 'Payload Logo'
 
   // Handle custom sizing
-  const customWidth = logoData?.width || 193
-  const customHeight = logoData?.height || 34
+  const customWidth = logoData?.width || '200'
+  const customHeight = logoData?.height || '100%'
   const customMaxWidth = logoData?.maxWidth || '9.375rem'
   
   // Build dynamic styles for custom sizing

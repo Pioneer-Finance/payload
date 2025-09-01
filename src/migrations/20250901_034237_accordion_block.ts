@@ -1,7 +1,7 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
-  await db.execute(sql`
+export async function up({ payload, req }: MigrateUpArgs): Promise<void> {
+  await payload.db.drizzle.execute(sql`
    CREATE TYPE "public"."enum_pages_blocks_accordion_accordion_type" AS ENUM('single', 'multiple');
   CREATE TYPE "public"."enum__pages_v_blocks_accordion_accordion_type" AS ENUM('single', 'multiple');
   CREATE TABLE "pages_blocks_accordion_accordion_items" (
@@ -77,8 +77,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE UNIQUE INDEX "redirects_from_idx" ON "redirects" USING btree ("from");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
-  await db.execute(sql`
+export async function down({  payload, req }: MigrateDownArgs): Promise<void> {
+  await payload.db.drizzle.execute(sql`
    ALTER TABLE "pages_blocks_accordion_accordion_items" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "pages_blocks_accordion" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "_pages_v_blocks_accordion_accordion_items" DISABLE ROW LEVEL SECURITY;

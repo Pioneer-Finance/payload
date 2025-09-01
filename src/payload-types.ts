@@ -6,66 +6,10 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
-/**
- * Supported timezones in IANA format.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "supportedTimezones".
- */
-export type SupportedTimezones =
-  | 'Pacific/Midway'
-  | 'Pacific/Niue'
-  | 'Pacific/Honolulu'
-  | 'Pacific/Rarotonga'
-  | 'America/Anchorage'
-  | 'Pacific/Gambier'
-  | 'America/Los_Angeles'
-  | 'America/Tijuana'
-  | 'America/Denver'
-  | 'America/Phoenix'
-  | 'America/Chicago'
-  | 'America/Guatemala'
-  | 'America/New_York'
-  | 'America/Bogota'
-  | 'America/Caracas'
-  | 'America/Santiago'
-  | 'America/Buenos_Aires'
-  | 'America/Sao_Paulo'
-  | 'Atlantic/South_Georgia'
-  | 'Atlantic/Azores'
-  | 'Atlantic/Cape_Verde'
-  | 'Europe/London'
-  | 'Europe/Berlin'
-  | 'Africa/Lagos'
-  | 'Europe/Athens'
-  | 'Africa/Cairo'
-  | 'Europe/Moscow'
-  | 'Asia/Riyadh'
-  | 'Asia/Dubai'
-  | 'Asia/Baku'
-  | 'Asia/Karachi'
-  | 'Asia/Tashkent'
-  | 'Asia/Calcutta'
-  | 'Asia/Dhaka'
-  | 'Asia/Almaty'
-  | 'Asia/Jakarta'
-  | 'Asia/Bangkok'
-  | 'Asia/Shanghai'
-  | 'Asia/Singapore'
-  | 'Asia/Tokyo'
-  | 'Asia/Seoul'
-  | 'Australia/Brisbane'
-  | 'Australia/Sydney'
-  | 'Pacific/Guam'
-  | 'Pacific/Noumea'
-  | 'Pacific/Auckland'
-  | 'Pacific/Fiji';
-
 export interface Config {
   auth: {
     users: UserAuthOperations;
   };
-  blocks: {};
   collections: {
     pages: Page;
     posts: Post;
@@ -186,18 +130,12 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
             appearance?: ('default' | 'outline') | null;
           };
           id?: string | null;
         }[]
       | null;
     media?: (number | null) | Media;
-    /**
-     * Choose text color for all hero text elements
-     */
     textColor?:
       | ('white' | 'black' | 'gray-light' | 'gray-dark' | 'blue' | 'red' | 'green' | 'yellow' | 'purple' | 'pink')
       | null;
@@ -214,9 +152,6 @@ export interface Page {
   )[];
   meta?: {
     title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
     image?: (number | null) | Media;
     description?: string | null;
   };
@@ -316,9 +251,6 @@ export interface Media {
  * via the `definition` "AccordionBlock".
  */
 export interface AccordionBlock {
-  /**
-   * Optional title for the accordion section
-   */
   title?: string | null;
   accordionItems?:
     | {
@@ -342,13 +274,7 @@ export interface AccordionBlock {
       }[]
     | null;
   accordionType?: ('single' | 'multiple') | null;
-  /**
-   * Allow all items to be closed at the same time
-   */
   collapsible?: boolean | null;
-  /**
-   * Which item should be open by default (1-based index, leave empty for none)
-   */
   defaultOpen?: number | null;
   id?: string | null;
   blockName?: string | null;
@@ -385,9 +311,6 @@ export interface SplitHero {
           } | null;
           url?: string | null;
           label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
           appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
@@ -429,18 +352,12 @@ export interface GradientHero {
           } | null;
           url?: string | null;
           label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
           appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
       }[]
     | null;
   media: number | Media;
-  /**
-   * Choose text color that contrasts well with your background image
-   */
   textColor?:
     | ('white' | 'black' | 'gray-light' | 'gray-dark' | 'blue' | 'red' | 'green' | 'yellow' | 'purple' | 'pink')
     | null;
@@ -479,9 +396,6 @@ export interface CallToActionBlock {
           } | null;
           url?: string | null;
           label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
           appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
@@ -524,9 +438,6 @@ export interface ContentBlock {
           } | null;
           url?: string | null;
           label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
           appearance?: ('default' | 'outline') | null;
         };
         id?: string | null;
@@ -625,9 +536,6 @@ export interface Post {
   categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
     image?: (number | null) | Media;
     description?: string | null;
   };
@@ -661,13 +569,6 @@ export interface User {
   hash?: string | null;
   loginAttempts?: number | null;
   lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
   password?: string | null;
 }
 /**
@@ -768,7 +669,6 @@ export interface Form {
             label?: string | null;
             width?: number | null;
             defaultValue?: string | null;
-            placeholder?: string | null;
             options?:
               | {
                   label: string;
@@ -813,9 +713,6 @@ export interface Form {
       )[]
     | null;
   submitButtonLabel?: string | null;
-  /**
-   * Choose whether to display an on-page message or redirect to a different page after they submit the form.
-   */
   confirmationType?: ('message' | 'redirect') | null;
   confirmationMessage?: {
     root: {
@@ -835,9 +732,6 @@ export interface Form {
   redirect?: {
     url: string;
   };
-  /**
-   * Send custom emails when the form submits. Use comma separated lists to send the same email to multiple recipients. To reference a value from this form, wrap that field's name with double curly brackets, i.e. {{firstName}}. You can use a wildcard {{*}} to output all data and {{*:table}} to format it as an HTML table in the email.
-   */
   emails?:
     | {
         emailTo?: string | null;
@@ -846,9 +740,6 @@ export interface Form {
         replyTo?: string | null;
         emailFrom?: string | null;
         subject: string;
-        /**
-         * Enter the message that should be sent in this email.
-         */
         message?: {
           root: {
             type: string;
@@ -871,8 +762,6 @@ export interface Form {
   createdAt: string;
 }
 /**
- * Comments submitted by visitors on blog posts
- *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "comments".
  */
@@ -884,9 +773,6 @@ export interface Comment {
     email: string;
   };
   post: number | Post;
-  /**
-   * Comments must be approved before they appear publicly
-   */
   isApproved?: boolean | null;
   publishedAt?: string | null;
   updatedAt: string;
@@ -898,9 +784,6 @@ export interface Comment {
  */
 export interface Redirect {
   id: number;
-  /**
-   * You will need to rebuild the website when changing this field.
-   */
   from: string;
   to?: {
     type?: ('reference' | 'custom') | null;
@@ -936,8 +819,6 @@ export interface FormSubmission {
   createdAt: string;
 }
 /**
- * This is a collection of automatically created search results. These results are used by the global site search and will be updated automatically as documents in the CMS are created or updated.
- *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "search".
  */
@@ -1086,14 +967,144 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        accordion?: T | AccordionBlockSelect<T>;
-        splitHero?: T | SplitHeroSelect<T>;
-        gradientHero?: T | GradientHeroSelect<T>;
-        cta?: T | CallToActionBlockSelect<T>;
-        content?: T | ContentBlockSelect<T>;
-        mediaBlock?: T | MediaBlockSelect<T>;
-        archive?: T | ArchiveBlockSelect<T>;
-        formBlock?: T | FormBlockSelect<T>;
+        accordion?:
+          | T
+          | {
+              title?: T;
+              accordionItems?:
+                | T
+                | {
+                    title?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              accordionType?: T;
+              collapsible?: T;
+              defaultOpen?: T;
+              id?: T;
+              blockName?: T;
+            };
+        splitHero?:
+          | T
+          | {
+              richText?: T;
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+        gradientHero?:
+          | T
+          | {
+              richText?: T;
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              media?: T;
+              textColor?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cta?:
+          | T
+          | {
+              richText?: T;
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              columns?:
+                | T
+                | {
+                    size?: T;
+                    richText?: T;
+                    enableLink?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        mediaBlock?:
+          | T
+          | {
+              media?: T;
+              id?: T;
+              blockName?: T;
+            };
+        archive?:
+          | T
+          | {
+              introContent?: T;
+              populateBy?: T;
+              relationTo?: T;
+              categories?: T;
+              limit?: T;
+              selectedDocs?: T;
+              id?: T;
+              blockName?: T;
+            };
+        formBlock?:
+          | T
+          | {
+              form?: T;
+              enableIntro?: T;
+              introContent?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1108,160 +1119,6 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "AccordionBlock_select".
- */
-export interface AccordionBlockSelect<T extends boolean = true> {
-  title?: T;
-  accordionItems?:
-    | T
-    | {
-        title?: T;
-        content?: T;
-        id?: T;
-      };
-  accordionType?: T;
-  collapsible?: T;
-  defaultOpen?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "SplitHero_select".
- */
-export interface SplitHeroSelect<T extends boolean = true> {
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  media?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "GradientHero_select".
- */
-export interface GradientHeroSelect<T extends boolean = true> {
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  media?: T;
-  textColor?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock_select".
- */
-export interface CallToActionBlockSelect<T extends boolean = true> {
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ContentBlock_select".
- */
-export interface ContentBlockSelect<T extends boolean = true> {
-  columns?:
-    | T
-    | {
-        size?: T;
-        richText?: T;
-        enableLink?: T;
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "MediaBlock_select".
- */
-export interface MediaBlockSelect<T extends boolean = true> {
-  media?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ArchiveBlock_select".
- */
-export interface ArchiveBlockSelect<T extends boolean = true> {
-  introContent?: T;
-  populateBy?: T;
-  relationTo?: T;
-  categories?: T;
-  limit?: T;
-  selectedDocs?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FormBlock_select".
- */
-export interface FormBlockSelect<T extends boolean = true> {
-  form?: T;
-  enableIntro?: T;
-  introContent?: T;
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1409,13 +1266,6 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1516,7 +1366,6 @@ export interface FormsSelect<T extends boolean = true> {
               label?: T;
               width?: T;
               defaultValue?: T;
-              placeholder?: T;
               options?:
                 | T
                 | {
@@ -1665,22 +1514,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: number;
   logo?: {
-    /**
-     * Upload a custom logo image. If not provided, the default Payload logo will be used.
-     */
     image?: (number | null) | Media;
     alt?: string | null;
-    /**
-     * Custom width for the logo in pixels. Leave empty for default size.
-     */
     width?: number | null;
-    /**
-     * Custom height for the logo in pixels. Leave empty for default size.
-     */
     height?: number | null;
-    /**
-     * Maximum width using CSS units (e.g., 10rem, 150px, 100%). Responsive breakpoint.
-     */
     maxWidth?: string | null;
   };
   navItems?:
@@ -1708,22 +1545,10 @@ export interface Header {
 export interface Footer {
   id: number;
   logo?: {
-    /**
-     * Upload a custom logo image. If not provided, the default Payload logo will be used.
-     */
     image?: (number | null) | Media;
     alt?: string | null;
-    /**
-     * Custom width for the logo in pixels. Leave empty for default size.
-     */
     width?: number | null;
-    /**
-     * Custom height for the logo in pixels. Leave empty for default size.
-     */
     height?: number | null;
-    /**
-     * Maximum width using CSS units (e.g., 10rem, 150px, 100%). Responsive breakpoint.
-     */
     maxWidth?: string | null;
   };
   navItems?:

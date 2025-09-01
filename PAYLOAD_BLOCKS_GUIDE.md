@@ -307,6 +307,7 @@ const Logo = ({ logoData }: { logoData?: LogoData }) => {
 6. **Generate types**: Run `pnpm payload generate:types`
 7. **Create and run migration**: Run `pnpm payload migrate:create [block-name]` then `pnpm payload migrate`
 8. **Test**: Verify in Payload admin and frontend
+7. **Install**: Run pnpm install to make sure lockfile is updated if any new packages were added
 
 ### For Globals:
 1. **Define configuration**: Create `config.ts` in appropriate folder (e.g., `src/Header/`)
@@ -315,6 +316,7 @@ const Logo = ({ logoData }: { logoData?: LogoData }) => {
 4. **Generate types**: Run `pnpm payload generate:types`
 5. **Create/run migration**: `pnpm payload migrate:create [name]` then `pnpm payload migrate`
 6. **Test**: Verify in Payload admin and global usage
+7. **Install**: Run pnpm install to make sure lockfile is updated if any new packages were added
 
 ## Dependencies
 
@@ -331,6 +333,7 @@ Ensure these packages are installed:
 4. **Performance**: Lazy load heavy components when possible
 5. **Error Handling**: Check for null/undefined values
 6. **Documentation**: Comment complex logic and configurations
+7. **No Custom types or any types** : Do not add any custom types or any types. Always use generated payload types
 
 ## Troubleshooting
 
