@@ -220,15 +220,101 @@ className="grid w-full grid-cols-1 lg:grid-cols-2 gap-8 items-center"
 - `group` - Nested field grouping
 - `array` - Repeatable field groups
 
+## Working with Payload Globals
+
+Payload globals are site-wide settings like headers, footers, and site configuration. Unlike blocks, globals are single instances that can be referenced throughout the application.
+
+### Global Configuration Example (Header/Footer with Logo Upload)
+
+```typescript
+import type { GlobalConfig } from 'payload'
+
+export const Header: GlobalConfig = {
+  slug: 'header',
+  access: {
+    read: () => true,
+  },
+  fields: [
+    {
+      name: 'logo',
+      type: 'group',
+      label: 'Logo',
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Logo Image',
+          admin: {
+            description: 'Upload a custom logo image. If not provided, the default logo will be used.',
+          },
+        },
+        {
+          name: 'alt',
+          type: 'text',
+          label: 'Alt Text',
+          defaultValue: 'Logo',
+        },
+      ],
+    },
+    // Other fields...
+  ],
+  hooks: {
+    afterChange: [revalidateHeader],
+  },
+}
+```
+
+### Using Global Data in Components
+
+```typescript
+// Access global data
+const header: Header = await getCachedGlobal('header', 1)()
+
+// Pass to components
+<Logo logoData={header.logo} />
+```
+
+### Component with Upload Field Handling
+
+```typescript
+interface LogoData {
+  image?: string | number | Media | null
+  alt?: string | null
+}
+
+const Logo = ({ logoData }: { logoData?: LogoData }) => {
+  // Handle different media field states
+  const logoSrc = 
+    typeof logoData?.image === 'object' && logoData.image?.url
+      ? logoData.image.url
+      : 'fallback-url.svg'
+  
+  const logoAlt = logoData?.alt || 'Default Alt Text'
+  
+  return <img src={logoSrc} alt={logoAlt} />
+}
+```
+
 ## Development Workflow
 
+### For Blocks:
 1. **Create block structure**: `src/blocks/[BlockName]/`
 2. **Define configuration**: Create `config.ts` with field schema
 3. **Build component**: Create `Component.tsx` with React implementation
 4. **Add to collection**: Import and add to blocks array in collection config
 5. **Register renderer**: Add to `RenderBlocks.tsx` component mapping
 6. **Generate types**: Run `pnpm payload generate:types`
-7. **Test**: Verify in Payload admin and frontend
+7. **Create and run migration**: Run `pnpm payload migrate:create [block-name]` then `pnpm payload migrate`
+8. **Test**: Verify in Payload admin and frontend
+
+### For Globals:
+1. **Define configuration**: Create `config.ts` in appropriate folder (e.g., `src/Header/`)
+2. **Add to payload config**: Import and add to globals array
+3. **Create component**: Build component that uses global data
+4. **Generate types**: Run `pnpm payload generate:types`
+5. **Create/run migration**: `pnpm payload migrate:create [name]` then `pnpm payload migrate`
+6. **Test**: Verify in Payload admin and global usage
 
 ## Dependencies
 
