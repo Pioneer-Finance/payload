@@ -11,6 +11,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SplitHero } from '@/blocks/SplitHero/Component'
 import { GradientHero } from '@/blocks/GradientHero/Component'
+import { RichTextBlock } from '@/blocks/RichText/Component'
 
 const blockComponents = {
   accordion: AccordionBlock,
@@ -21,6 +22,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   splitHero: SplitHero,
   gradientHero: GradientHero,
+  richText: RichTextBlock,
 }
 
 export const RenderBlocks: React.FC<{

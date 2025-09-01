@@ -10,6 +10,7 @@ import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { SplitHero } from '../../blocks/SplitHero/config'
 import { GradientHero } from '../../blocks/GradientHero/config'
+import { RichTextBlock } from '../../blocks/RichText/config'
 import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
@@ -80,7 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [Accordion, SplitHero, GradientHero, CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [Accordion, SplitHero, GradientHero, CallToAction, Content, MediaBlock, Archive, FormBlock, RichTextBlock],
               required: true,
             },
           ],

@@ -16,6 +16,7 @@ export const Accordion: Block = {
       type: 'array',
       label: 'Accordion Items',
       minRows: 1,
+      
       fields: [
         {
           name: 'title',
