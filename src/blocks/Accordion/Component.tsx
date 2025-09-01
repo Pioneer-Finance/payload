@@ -7,24 +7,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import type { AccordionBlock as AccordionBlockProps } from 'src/payload-types'
+
 import RichText from '@/components/RichText'
 
-interface AccordionItemType {
-  title: string
-  content: Record<string, any>
-}
+type Props = {
+  className?: string
+} & AccordionBlockProps
 
-interface AccordionBlockProps {
-  title?: string
-  accordionItems?: AccordionItemType[]
-  accordionType?: 'single' | 'multiple'
-  collapsible?: boolean
-  defaultOpen?: number
-  blockName?: string
-  blockType: 'accordion'
-}
 
-export const AccordionBlock: React.FC<AccordionBlockProps> = ({
+
+export const AccordionBlock: React.FC<Props> = ({
   title,
   accordionItems,
   accordionType = 'single',
@@ -67,7 +60,7 @@ export const AccordionBlock: React.FC<AccordionBlockProps> = ({
       {accordionType === 'single' ? (
         <Accordion
           type="single"
-          collapsible={collapsible}
+          collapsible={collapsible ?? undefined}
           defaultValue={getDefaultValue()}
           className="w-full"
         >
