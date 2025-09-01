@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
 
+import { AccordionBlock } from '@/blocks/Accordion/Component'
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
@@ -12,6 +13,7 @@ import { SplitHero } from '@/blocks/SplitHero/Component'
 import { GradientHero } from '@/blocks/GradientHero/Component'
 
 const blockComponents = {
+  accordion: AccordionBlock,
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,

@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
+import { Accordion } from '../../blocks/Accordion/config'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
@@ -79,7 +80,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [SplitHero, GradientHero, CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [Accordion, SplitHero, GradientHero, CallToAction, Content, MediaBlock, Archive, FormBlock],
               required: true,
             },
           ],

@@ -5,6 +5,9 @@ import type { Media } from '@/payload-types'
 interface LogoData {
   image?: string | number | Media | null
   alt?: string | null
+  width?: number | null
+  height?: number | null
+  maxWidth?: string | null
 }
 
 interface Props {
@@ -29,16 +32,29 @@ export const Logo = (props: Props) => {
   // Use custom alt text if provided, otherwise use default
   const logoAlt = logoData?.alt || 'Payload Logo'
 
+  // Handle custom sizing
+  const customWidth = logoData?.width || 193
+  const customHeight = logoData?.height || 34
+  const customMaxWidth = logoData?.maxWidth || '9.375rem'
+  
+  // Build dynamic styles for custom sizing
+  const logoStyle: React.CSSProperties = {
+    maxWidth: customMaxWidth,
+    width: logoData?.width ? `${logoData.width}px` : '100%',
+    height: logoData?.height ? `${logoData.height}px` : '34px',
+  }
+
   return (
     /* eslint-disable @next/next/no-img-element */
     <img
       alt={logoAlt}
-      width={193}
-      height={34}
+      width={customWidth}
+      height={customHeight}
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('max-w-[9.375rem] w-full h-[34px]', className)}
+      className={clsx('w-full', className)}
+      style={logoStyle}
       src={logoSrc}
     />
   )

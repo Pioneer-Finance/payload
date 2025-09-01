@@ -30,6 +30,31 @@ export const Header: GlobalConfig = {
           label: 'Alt Text',
           defaultValue: 'Logo',
         },
+        {
+          name: 'width',
+          type: 'number',
+          label: 'Logo Width (px)',
+          admin: {
+            description: 'Custom width for the logo in pixels. Leave empty for default size.',
+          },
+        },
+        {
+          name: 'height',
+          type: 'number',
+          label: 'Logo Height (px)',
+          admin: {
+            description: 'Custom height for the logo in pixels. Leave empty for default size.',
+          },
+        },
+        {
+          name: 'maxWidth',
+          type: 'text',
+          label: 'Max Width (CSS)',
+          defaultValue: '9.375rem',
+          admin: {
+            description: 'Maximum width using CSS units (e.g., 10rem, 150px, 100%). Responsive breakpoint.',
+          },
+        },
       ],
     },
     {
