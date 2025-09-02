@@ -4,14 +4,24 @@ import config from '@payload-config'
 import { getServerSideURL } from '@/utilities/getURL'
 import { Page, Post } from '@/payload-types'
 
+import type { Where } from 'payload'
+
+
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload: BasePayload = await getPayload({ config })
+
+  const query: Where = {
+  status: {
+    equals: 'published',
+  },
+}
 
   // Fetch all posts
   const posts: PaginatedDocs<Post> = await payload.find({
     collection: 'posts',
     limit: 0,
-    where: {},
+    where: query
   })
 
   // Define the base URL dynamically
