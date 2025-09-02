@@ -12,6 +12,7 @@ This document details the process of converting the `post-1.ts` seed data from a
 
 * **List Handling:** The Payload 2 seed data used simple `<ul>` and `<li>` structures for lists.  These were not directly compatible with the Lexical rich text editor in Payload 3.  The solution involved replacing the list structures with paragraphs containing bold text to represent the list items.
 
+
 ## Conversion Steps:
 
 1. **Analyze Payload 2 Data:** The original `post-1.ts` file from the Payload 2 project was analyzed to understand its content and structure.
