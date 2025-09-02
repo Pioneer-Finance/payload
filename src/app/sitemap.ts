@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload: BasePayload = await getPayload({ config })
 
   const query: Where = {
-  status: {
+  _status: {
     equals: 'published',
   },
 }
